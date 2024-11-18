@@ -8,7 +8,6 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Additional CSS is the same as before; just make sure the sections appear in the correct order */
         .auto-scroll {
             overflow: hidden;
             padding: 20px 0;
@@ -302,6 +301,27 @@
                     </div>
                 </div>
             </div>
+            <!-- Chat Button -->
+     <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> 
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
     
             <div class="footer-bottom">
                 <p>&copy; 2024 RoamAura. All rights reserved.</p>
