@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - RoamAura</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("images/loginbg.jpeg");
+            background-size: cover;
+            color: #333;
+        }
+
+        /* Authentication container */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: inset 0px 0px 25px  #B7E0FF;
+           
+        }
+
+        /* Form wrapper */
+
+        .form-wrapper h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: #FFB38E;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .form-wrapper form {
+            width: 100%;
+        }
+
+        .form-wrapper form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 0.8rem 0;
+            background: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px rgb(129, 129, 129) solid;
+            color: white;
+            
+        }
+        
+        .form-wrapper form input:focus {
+            border-color: #6e8efb;
+            box-shadow: 0 0 8px rgba(110, 142, 251, 0.3);
+            outline: none;
+        }
+
+        /* Button styling */
+        .form-wrapper form button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 1rem;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-wrapper form button:hover {
+            background: linear-gradient(135deg, #5a76d9, #965fc5);
+        }
+
+        /* Text and link styling */
+        .form-wrapper p {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: rgb(255, 204, 204);
+        }
+
+        .form-wrapper p a {
+            color: #1E3E62;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            
+            font-weight: 600;
+        }
+
+        .form-wrapper p a:hover {
+            color: #4f66c1;
+        }
+
+    </style>
+</head>
+<div id="preloader-container"></div>
+ <script>
+     fetch('preloader.html')
+         .then(response => response.text())
+         .then(data => {
+             document.getElementById('preloader-container').innerHTML = data;
+             
+             
+             setTimeout(() => {
+                 document.getElementById('preloader-container').style.display = 'none';
+             }, 2000); 
+         })
+         .catch(error => console.error('Error loading preloader:', error));
+ </script>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;">  RoamAura
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+       
+    <ul id="nav-links" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="aboutus.html" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="team.html">Our Team</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="history.html">History&Milestones</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="services.html" class="dropbtn">Services</a>
+            <div class="dropdown-content">
+                <a href="travelplanning.html">Travel Planning</a>
+                <a href="customtours.html">Custom Tours</a>
+                <a href="accommodation.html">Accommodation</a>
+                <a href="transfers.html">Transfers</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="destinations.html" class="dropbtn">Destinations</a>
+            <div class="dropdown-content">
+                <a href="#europe">Europe</a>
+                <a href="#asia">Asia</a>
+                <a href="#america">America</a>
+                <a href="#oceania">Oceania</a>
+            </div>
+        </li>
+        <li><a href="Gallery.html">Gallery</a></li>
+        <li><a href="index.html?#contact-form">Contact</a></li>
+
+    </ul>
+    <div class="auth-buttons">
+        <a href="register.html" class="btn-signup">Register</a>
+        <a href="login.html" class="btn-signin">Signin</a>
+    </div>
+</nav>
+</header>
+<body>
+    <div class="auth-container">
+        <div class="form-wrapper">
+            <h2>Welcome Back <br> to <br> <span style="color: #87A2FF;"> RoamAura </span></h2>
+            <form action="backend/login.php" method="POST">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+        </div>
+    </div>
+     <!-- Chat Button -->
+     <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> 
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+
+</html>

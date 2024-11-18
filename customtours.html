@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Tours</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; 
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+footer h3 {
+    color: #fff;
+}
+
+
+
+.hero .cta-button {
+    background-color: #f76c6c;
+    border: none;
+    padding: 15px 30px;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 20px;
+    transition: background-color 0.3s;
+}
+
+.hero .cta-button:hover {
+    background-color: #e35b5b;
+}
+
+/* Introduction Section */
+.introduction {
+    background-color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.introduction h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.introduction p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* How It Works Section */
+/* How It Works Section */
+.how-it-works {
+    background: linear-gradient(135deg, #f0f8ff, #d8ecf3);
+    padding: 60px 20px;
+    clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 95%);
+    position: relative;
+}
+
+.steps-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Unique step card design */
+.step {
+    background-color: #000;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    border-left: 8px solid #f76c6c;
+}
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at center, #f76c6c, transparent);
+    opacity: 0.15;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.step:hover {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.step h3 {
+    color: #f76c6c;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.step p {
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.step::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    width: 50px;
+    height: 50px;
+    background-color: #f76c6c;
+    opacity: 0.3;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    .step {
+        padding: 20px;
+    }
+}
+
+
+/* Tour Options Section */
+/* Tour Options Section */
+.tour-options {
+    background-color: #e1f5fe;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 60px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Section Title */
+.tour-options h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: bold;
+    color: #0097a7;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Tour Options List */
+.tour-options ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+/* Individual Tour Option Card */
+.tour-options li {
+    background: linear-gradient(45deg, #0097a7, #00bcd4);
+    color: white;
+    border-radius: 20px;
+    padding: 30px;
+    width: 280px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Hover Effects for Cards */
+.tour-options li:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+/* Heading Inside Cards */
+.tour-options li h3 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+}
+
+/* Description Inside Cards */
+.tour-options li p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+/* CTA Button Inside Cards */
+.tour-options li .cta-button {
+    background-color: #ffffff;
+    color: #0097a7;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tour-options li .cta-button:hover {
+    background-color: #ff7043;
+    color: #ffffff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .tour-options ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tour-options li {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tour-options h2 {
+        font-size: 32px;
+    }
+    .tour-options li {
+        padding: 25px;
+        width: 100%;
+    }
+    .tour-options li .cta-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+
+
+/* Contact Form Section */
+.contact-form {
+    background-color: #eaf4f4;
+    padding: 50px 20px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+}
+
+.contact-form input, 
+.contact-form textarea, 
+.contact-form button {
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #f76c6c;
+}
+
+.contact-form button {
+    background-color: #f76c6c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #e35b5b;
+}
+
+
+
+    </style>
+</head>
+<div id="preloader-container"></div>
+
+
+<script>
+  
+    fetch('preloader.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('preloader-container').innerHTML = data;
+           
+            setTimeout(() => {
+                document.getElementById('preloader-container').style.display = 'none';
+            }, 2000); 
+        })
+        .catch(error => console.error('Error loading preloader:', error));
+</script>
+ <!-- Chat Button -->
+ <div id="chatButton" class="floating-chat-button">
+    <i class="fas fa-comments"></i> <!-- Font Awesome chat icon -->
+</div>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+               <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;"> <a href="index.html">  RoamAura
+            </div></a>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+       
+    <ul id="nav-links" class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+            <a href="aboutus.html" class="dropbtn">About</a>
+            <div class="dropdown-content">
+                <a href="team.html">Our Team</a>
+                <a href="mission.html">Our Mission</a>
+                <a href="history.html">History&Milestones</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="services.html" class="dropbtn">Services</a>
+            <div class="dropdown-content">
+                <a href="travelplanning.html">Travel Planning</a>
+                <a href="customtours.html">Custom Tours</a>
+                <a href="accommodation.html">Accommodation</a>
+                <a href="transfers.html">Transfers</a>
+            </div>
+        </li>
+        <li class="dropdown">
+            <a href="destinations.html" class="dropbtn">Destinations</a>
+            <div class="dropdown-content">
+                <a href="#europe">Europe</a>
+                <a href="#asia">Asia</a>
+                <a href="#america">America</a>
+                <a href="#oceania">Oceania</a>
+            </div>
+        </li>
+        <li><a href="Gallery.html">Gallery</a></li>
+        <li><a href="index.html?#contact-form">Contact</a></li>
+
+    </ul>
+    <div class="auth-buttons">
+        <a href="register.html" class="btn-signup">Register</a>
+        <a href="login.html" class="btn-signin">Signin</a>
+    </div>
+</nav>
+
+</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Tailored Adventures Made Just for You</h1>
+            <a href="#tour-form"><button class="cta-button">Plan Your Custom Tour</button></a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <h2>Why Choose Our Custom Tours?</h2>
+        <p>Experience travel like never before with personalized itineraries and unique experiences that cater to your preferences.</p>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <h3>1. Inquiry</h3>
+                <p>Fill out our quick form to share your travel ideas.</p>
+            </div>
+            <div class="step">
+                <h3>2. Consultation</h3>
+                <p>Discuss your preferences with our travel experts.</p>
+            </div>
+            <div class="step">
+                <h3>3. Itinerary Planning</h3>
+                <p>We create a custom itinerary tailored to you.</p>
+            </div>
+            <div class="step">
+                <h3>4. Approval & Booking</h3>
+                <p>Review, approve, and enjoy a seamless booking process.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Options Section -->
+    <section class="tour-options">
+        <h2>Tour Options</h2>
+        <ul>
+            <li> Adventure Tours</li>
+            <li>Cultural Experiences</li>
+            <li>Family-Friendly Activities</li>
+            <li>Luxury Escapes</li>
+        </ul>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form">
+        <h2>Plan Your Custom Tour</h2>
+        <form id="tour-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="preferences">Travel Preferences:</label>
+            <textarea id="preferences" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+     <!-- Chat Button -->
+     <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> <!-- Font Awesome chat icon -->
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('tour-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    alert('Thank you for your inquiry! Our team will contact you soon.');
+});
+
+    </script>
+</body>
+</html>

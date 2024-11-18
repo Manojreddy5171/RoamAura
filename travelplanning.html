@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner - RoamAura</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0f7fa, #ffffff);
+            color: #333;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+            padding: 20px;
+        }
+        .search-bar {
+            margin: 10px 0;
+        }
+        .card {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: calc(33% - 40px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h3 {
+            margin: 0 0 10px;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        body button {
+            background-color: #009688;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        body button:hover {
+            background-color: #00796b;
+        }
+        #body ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #body li {
+            background: #e0f2f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .remove-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .remove-btn:hover {
+            background: #d32f2f;
+        }
+       
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: calc(100% - 40px);
+            }
+        }
+    </style>
+</head>
+<div id="preloader-container"></div>
+
+
+<script>
+  
+    fetch('preloader.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('preloader-container').innerHTML = data;
+           
+            setTimeout(() => {
+                document.getElementById('preloader-container').style.display = 'none';
+            }, 2000); 
+        })
+        .catch(error => console.error('Error loading preloader:', error));
+</script>
+ <!-- Chat Button -->
+ <div id="chatButton" class="floating-chat-button">
+    <i class="fas fa-comments"></i> <!-- Font Awesome chat icon -->
+</div>
+
+<!-- Chat Window -->
+<div id="chatWindow" class="chat-window">
+    <div class="chat-header">
+        <h4>Chat with us</h4>
+        <button id="closeChat" class="close-btn">&times;</button>
+    </div>
+    <div id="chatBody" class="chat-body">
+        <div id="chatContent" class="chat-content"></div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="userInput" placeholder="Type a message..." />
+        <button id="sendMessage" class="send-btn">Send</button>
+    </div>
+</div>
+<script src="script.js"></script>
+
+
+
+
+
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;"> RoamAura
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul id="nav-links" class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="aboutus.html" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="team.html">Our Team</a>
+                        <a href="mission.html">Our Mission</a>
+                        <a href="history.html">History&Milestones</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="services.html" class="dropbtn">Services</a>
+                    <div class="dropdown-content">
+                        <a href="travelplanning.html">Travel Planning</a>
+                        <a href="customtours.html">Custom Tours</a>
+                        <a href="accommodation.html">Accommodation</a>
+                        <a href="transfers.html">Transfers</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="destinations.html" class="dropbtn">Destinations</a>
+                    <div class="dropdown-content">
+                        <a href="#europe">Europe</a>
+                        <a href="#asia">Asia</a>
+                        <a href="#america">America</a>
+                        <a href="#oceania">Oceania</a>
+                    </div>
+                </li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                <li><a href="index.html?#contact-form">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="register.html" class="btn-signup">Register</a>
+                <a href="login.html" class="btn-signin">Signin</a>
+            </div>
+        </nav>
+</header>
+<body>
+<section class="hero">
+    <h1>TRAVEL PLANNING</h1>
+    <p>Explore breathtaking destinations around the globe with RoamAura, where every journey creates unforgettable memories.</p>
+</section>
+
+<div class="container">
+    <div class="section" id="destination-section">
+        <h2>Select Your Destination</h2>
+        <input type="text" id="search-bar" class="search-bar" placeholder="Search destinations..." />
+        <div id="destination-cards"></div>
+        <h3>Your Selected Destinations:</h3>
+        <ul id="selected-destinations"></ul>
+    </div>
+
+    <div class="section" id="packing-section">
+        <h2>Packing List</h2>
+        <input type="text" id="packing-input" placeholder="Add packing item..." />
+        <button id="add-packing-item">Add Item</button>
+        <ul id="packing-list"></ul>
+    </div>
+
+    <div class="section" id="budget-section">
+        <h2>Estimate Your Budget</h2>
+        <input type="number" id="budget-input" placeholder="Enter budget..." />
+        <button id="set-budget">Set Budget</button>
+        <div id="budget-output"></div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    const destinations = [
+        "Paris", "Rome", "New York", "Tokyo", "Sydney", "London", "Barcelona", "Amsterdam", "Dubai", "Singapore",
+        "Bangkok", "Istanbul", "Los Angeles", "Rio de Janeiro", "Hong Kong", "Moscow", "Cairo", "Berlin",
+        "Lisbon", "Buenos Aires", "Mumbai", "Seoul", "San Francisco", "Toronto", "Melbourne", "Dublin",
+        "Vancouver", "Athens", "Prague", "Stockholm", "Havana", "Kuala Lumpur", "Budapest", "Jerusalem",
+        "Zurich", "Mexico City", "Copenhagen", "Oslo", "Edinburgh", "Brussels", "Seville", "Santiago",
+        "Tallinn", "Helsinki", "Wellington"
+    ];
+
+    const destinationCards = document.getElementById('destination-cards');
+
+    // Create destination cards
+    destinations.forEach(destination => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.setAttribute('data-destination', destination);
+        card.innerHTML = `
+            <h3>${destination}</h3>
+            <p>A popular travel destination</p>
+            <button class="add-destination">Add</button>
+        `;
+        destinationCards.appendChild(card);
+    });
+
+    // Adding destination from the card
+    destinationCards.addEventListener('click', function(event) {
+        if (event.target.classList.contains('add-destination')) {
+            const destination = event.target.parentElement.getAttribute('data-destination');
+            const selectedDestinations = document.getElementById('selected-destinations');
+
+            if (![...selectedDestinations.children].some(item => item.textContent.includes(destination))) {
+                const listItem = document.createElement('li');
+                listItem.textContent = destination;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-btn';
+                removeButton.onclick = function() {
+                    selectedDestinations.removeChild(listItem);
+                };
+
+                listItem.appendChild(removeButton);
+                selectedDestinations.appendChild(listItem);
+            } else {
+                alert('Destination already added!');
+            }
+        }
+    });
+
+    // Add packing item to the list
+    document.getElementById('add-packing-item').addEventListener('click', function() {
+        const packingInput = document.getElementById('packing-input').value;
+        const packingList = document.getElementById('packing-list');
+
+        if (packingInput) {
+            const listItem = document.createElement('li');
+            listItem.textContent = packingInput;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.className = 'remove-btn';
+            removeButton.onclick = function() {
+                packingList.removeChild(listItem);
+            };
+
+            listItem.appendChild(removeButton);
+            packingList.appendChild(listItem);
+            document.getElementById('packing-input').value = ''; // Clear input
+        } else {
+            alert('Please enter a packing item.');
+        }
+    });
+
+    // Set and display budget
+    document.getElementById('set-budget').addEventListener('click', function() {
+        const budgetInput = document.getElementById('budget-input').value;
+        const budgetOutput = document.getElementById('budget-output');
+
+        if (budgetInput) {
+            budgetOutput.textContent = `Your estimated budget is: $${budgetInput}`;
+            document.getElementById('budget-input').value = ''; // Clear input
+        } else {
+            alert('Please enter a budget amount.');
+        }
+    });
+
+    // Search functionality
+    document.getElementById('search-bar').addEventListener('input', function() {
+        const searchQuery = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(card => {
+            const destinationName = card.getAttribute('data-destination').toLowerCase();
+            card.style.display = destinationName.includes(searchQuery) ? 'inline-block' : 'none';
+        });
+    });
+</script>
+
+</body>
+</html>

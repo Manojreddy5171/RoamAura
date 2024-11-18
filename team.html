@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - RoamAura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">   
+</head>
+<body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;">  RoamAura
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+           
+        <ul id="nav-links" class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="aboutus.html" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="team.html">Our Team</a>
+                    <a href="mission.html">Our Mission</a>
+                    <a href="history.html">History&Milestones</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="services.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="travelplanning.html">Travel Planning</a>
+                    <a href="customtours.html">Custom Tours</a>
+                    <a href="accommodation.html">Accommodation</a>
+                    <a href="transfers.html">Transfers</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="destinations.html" class="dropbtn">Destinations</a>
+                <div class="dropdown-content">
+                    <a href="#europe">Europe</a>
+                    <a href="#asia">Asia</a>
+                    <a href="#america">America</a>
+                    <a href="#oceania">Oceania</a>
+                </div>
+            </li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="index.html?#contact-form">Contact</a></li>
+
+        </ul>
+        <div class="auth-buttons">
+            <a href="register.html" class="btn-signup">Register</a>
+            <a href="login.html" class="btn-signin">Signin</a>
+        </div>
+    </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>Meet Our Team</h1>
+        <p>Behind every great adventure ,There is a great team.</p>
+    </section>
+
+    <section class="content">
+        <h2>Our Dedicated Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="images/manu.jpeg" alt="Team Member 1">
+                <h3>Manoj Reddy Ch</h3>
+                <p>CEO & Founder</p>
+                <p>UI/UX Designer</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/manoj-reddy-ch-160685208/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/manojre60013446"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/mr._.reddy_ch/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="images/pra1.png" alt="Team Member 2">
+                <h3>Lakshmi Prasanna M</h3>
+                <p>Marketing Head</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mopuri-lakshmi-prasanna-69050a309/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/m.lakshmiprasanna_23/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="images/harni-modified.png" alt="Team Member 3">
+                <h3>Netla Harinitha</h3>
+                <p>Lead Developer</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+           
+            
+            <div class="team-member">
+                <img src="images/chand.png" alt="Team Member 4">
+                <h3>Chand Basha</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Chat Button -->
+     <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> 
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

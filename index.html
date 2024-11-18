@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoamAura - Travel the World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+ <div id="preloader-container"></div>
+ <script>
+   
+     fetch('preloader.html')
+         .then(response => response.text())
+         .then(data => {
+             document.getElementById('preloader-container').innerHTML = data;
+            
+             setTimeout(() => {
+                 document.getElementById('preloader-container').style.display = 'none';
+             }, 2000); 
+         })
+         .catch(error => console.error('Error loading preloader:', error));
+ </script>
+<body>
+    <header>
+            <nav>
+                <div class="logo">
+                   <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;"> <a href="index.html">  RoamAura
+                </div></a>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+           
+        <ul id="nav-links" class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="aboutus.html" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="team.html">Our Team</a>
+                    <a href="mission.html">Our Mission</a>
+                    <a href="history.html">History&Milestones</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="services.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="travelplanning.html">Travel Planning</a>
+                    <a href="customtours.html">Custom Tours</a>
+                    <a href="accommodation.html">Accommodation</a>
+                    <a href="transfers.html">Transfers</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="destinations.html" class="dropbtn">Destinations</a>
+                <div class="dropdown-content">
+                    <a href="#europe">Europe</a>
+                    <a href="#asia">Asia</a>
+                    <a href="#america">America</a>
+                    <a href="#oceania">Oceania</a>
+                </div>
+            </li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="index.html?#contact-form">Contact</a></li>
+
+        </ul>
+        <div class="auth-buttons">
+            <a href="register.html" class="btn-signup">Register</a>
+            <a href="login.html" class="btn-signin">Signin</a>
+        </div>
+    </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Explore New Horizons with <span>RoamAura</span></h1>
+            <p>Discover the world’s most beautiful places at your fingertips</p>
+    
+            <!-- Search bar -->
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Find Your Adventure" onkeyup="liveSearch()">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-us section">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>About RoamAura</h2>
+                <p>
+                    At RoamAura, we believe travel is not just about exploring new places, but about creating experiences
+                    that last a lifetime. Our goal is to help you discover the beauty and diversity of the world by
+                    offering unique and personalized travel experiences tailored to your preferences.
+                </p>
+                <p>
+                    Whether you're looking for a serene beach vacation, a cultural adventure, or an exhilarating
+                    expedition, RoamAura is your trusted partner in designing unforgettable journeys. We pride
+                    ourselves on our dedication to sustainability and authentic travel that respects local cultures
+                    and environments.
+                </p>
+                <a href="#destinations" class="explore-btn">Explore Our Destinations</a>
+            </div>
+            <div class="about-image">
+                <img src="images/logo.png" alt="About RoamAura">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="mission-vision" class="mission-vision section">
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>
+                At RoamAura, our mission is to provide personalized travel experiences that inspire wanderlust, promote sustainable tourism, and foster cultural exchange across the globe.
+            </p>
+        </div><br>
+        <div class="vision">
+            <h2>Our Vision</h2>
+            <p>
+                Our vision is to be a global leader in creating transformative travel experiences by offering innovative solutions and ensuring the safety, comfort, and enjoyment of our travelers.
+            </p>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <h2>Our Dedicated Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="images/manu.jpeg" alt="Team Member 1">
+                <h3>Manoj Reddy Ch</h3>
+                <p>CEO & Founder</p>
+                <p>UI/UX Designer</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/manoj-reddy-ch-160685208/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://x.com/manojre60013446"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/mr._.reddy_ch/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="images/pra1.png" alt="Team Member 2">
+                <h3>Lakshmi Prasanna M</h3>
+                <p>Marketing Head</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/mopuri-lakshmi-prasanna-69050a309/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/m.lakshmiprasanna_23/"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="images/harni-modified.png" alt="Team Member 3">
+                <h3>Netla Harinitha</h3>
+                <p>Lead Developer</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+           
+            
+            <div class="team-member">
+                <img src="images/chand.png" alt="Team Member 4">
+                <h3>Chand Basha</h3>
+                <p>UX Designer</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    
+    
+
+    <!-- Services Section  -->
+    <section id="services" class="services section">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-plane-departure"></i>
+                <h3>Flight Bookings</h3>
+                <p>We offer competitive rates and hassle-free flight bookings to your dream destinations worldwide.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hotel"></i>
+                <h3>Hotel Reservations</h3>
+                <p>Stay at the best hotels with exclusive deals to make your travel experience comfortable and affordable.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-globe"></i>
+                <h3>Tour Packages</h3>
+                <p>Explore curated tour packages that cater to different types of travelers, from adventurers to relaxation seekers.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-car"></i>
+                <h3>Car Rentals</h3>
+                <p>Get convenient and reliable car rental services to explore new cities at your own pace.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-map"></i>
+                <h3>Travel Guides</h3>
+                <p>Discover hidden gems and local attractions with the help of our expert travel guides and tips.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-friends"></i>
+                <h3>24/7 Customer Support</h3>
+                <p>We provide round-the-clock customer support to assist you with any travel-related inquiries or emergencies.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Destinations Section with Interactive Cards -->
+    <section id="destinations" class="destinations section">
+        <h2>Top Destinations</h2>
+        <div class="destinations-grid">
+            <div class="destination-card">
+                <img src="images/Santorini.jpg" alt="Santorini">
+                <div class="destination-info">
+                    <h3>Santorini, Greece</h3>
+                    <p>Explore stunning sunsets and beautiful coastlines.</p>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="images/Kyoto.jpeg" alt="Kyoto">
+                <div class="destination-info">
+                    <h3>Kyoto, Japan</h3>
+                    <p>Immerse yourself in the rich cultural heritage of Japan.</p>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="images/newzealand.jpg" alt="New Zealand">
+                <div class="destination-info">
+                    <h3>New Zealand</h3>
+                    <p>Uncover adventure in the land of the long white cloud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <div class="testimonials">
+        <h2>What Our Travelers Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial active">
+                <p>"RoamAura helped me plan the perfect getaway! Their attention to detail was outstanding."</p>
+                <h4>- Sarah Johnson</h4>
+            </div>
+            <div class="testimonial">
+                <p>"The trip to Bali was unforgettable! Everything was organized seamlessly."</p>
+                <h4>- David Smith</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Highly recommend RoamAura for any travel planning! They made our honeymoon magical."</p>
+                <h4>- Emily Davis</h4>
+            </div>
+        </div>
+        <div class="testimonial-controls">
+            <span class="dot active" onclick="changeTestimonial(0)"></span>
+            <span class="dot" onclick="changeTestimonial(1)"></span>
+            <span class="dot" onclick="changeTestimonial(2)"></span>
+        </div>
+    </div>
+
+    
+    
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-form">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, suggestions, or need assistance, feel free to reach out to us!</p>
+                <div class="info-box">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-text">
+                            <h3>Our Location</h3>
+                            <p>123 Nandyal, 518501</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="info-text">
+                            <h3>Call Us</h3>
+                            <p>+1-800-ROAMAURA</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-text">
+                            <h3>Email Us</h3>
+                            <p>hello@roamaura.com</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+    
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+    
+     
+    
+    <!-- Chat Button -->
+    <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> 
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+    <script>
+        function liveSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const sections = document.querySelectorAll('.service-card, .destination-card');
+    
+            
+            sections.forEach(section => {
+                const text = section.innerText.toLowerCase();
+                section.style.display = text.includes(query) ? "block" : "none"; 
+            });
+        }
+    
+        // Get elements
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const closeChat = document.getElementById('closeChat');
+        const userInput = document.getElementById('userInput');
+        const chatContent = document.getElementById('chatContent');
+        const sendMessageBtn = document.getElementById('sendMessage');
+    
+        if (chatButton && chatWindow && closeChat && userInput && chatContent && sendMessageBtn) {
+            // Toggle chat window visibility
+            chatButton.addEventListener('click', function() {
+                chatWindow.style.display = 'flex';
+            });
+    
+            // Close chat window
+            closeChat.addEventListener('click', function() {
+                chatWindow.style.display = 'none'; 
+            });
+    
+            // Send message functionality
+            sendMessageBtn.addEventListener('click', sendMessage);
+    
+            userInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+    
+        // Function to send user message and get response
+        function sendMessage() {
+            const userMessage = userInput.value.trim();
+    
+            if (userMessage) {
+                // Create user message element
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message', 'user');
+                messageElement.textContent = userMessage;
+                chatContent.appendChild(messageElement);
+    
+                // Scroll to the bottom of the chat
+                chatContent.scrollTop = chatContent.scrollHeight;
+    
+                // Clear the input
+                userInput.value = '';
+    
+                // Respond to the message based on keywords
+                setTimeout(function() {
+                    const botResponse = getBotResponse(userMessage);
+                    const botMessage = document.createElement('div');
+                    botMessage.classList.add('chat-message', 'bot');
+                    botMessage.textContent = botResponse;
+                    chatContent.appendChild(botMessage);
+    
+                    // Scroll to the bottom
+                    chatContent.scrollTop = chatContent.scrollHeight;
+                }, 1000); // Bot replies after 1 second
+            }
+        }
+    
+        // Function to determine bot response based on user message
+        function getBotResponse(message) {
+            const lowercaseMessage = message.toLowerCase();
+    
+            // Basic keyword-based responses
+            if (lowercaseMessage.includes('hello') || lowercaseMessage.includes('hi')) {
+                return "Hello! How can I assist you today?";
+            } else if (lowercaseMessage.includes('booking') || lowercaseMessage.includes('reserve')) {
+                return "You can book a trip with us by visiting the booking section on our website!";
+            } else if (lowercaseMessage.includes('price') || lowercaseMessage.includes('cost')) {
+                return "Our pricing varies depending on the destination. Please check the 'Packages' section for detailed information.";
+            } else if (lowercaseMessage.includes('contact') || lowercaseMessage.includes('support')) {
+                return "You can reach out to our support team via the 'Contact Us' page. You can also contact us at (+91) 79813 67125 or (+91) 93923 26481, or email us at support@roamaura.com for assistanceWe're here to help!";
+            } else if (lowercaseMessage.includes('thank you') || lowercaseMessage.includes('thanks')) {
+                return "You're welcome! Let me know if there's anything else I can help with.";
+            } else if (lowercaseMessage.includes('bye') || lowercaseMessage.includes('goodbye')) {
+                return "Goodbye! Have a great day!";
+            } 
+    
+            // Expanded Responses: Destinations
+            else if (lowercaseMessage.includes('destination') || lowercaseMessage.includes('locations')) {
+                return "We offer amazing destinations worldwide, from tropical beaches to mountain escapes. Check our 'Destinations' page for more information!";
+            } else if (lowercaseMessage.includes('popular destinations')) {
+                return "Our most popular destinations include Bali, Paris, and the Maldives. Visit our 'Destinations' section for more details!";
+            }
+    
+            // Transportation & Flights
+            else if (lowercaseMessage.includes('flight') || lowercaseMessage.includes('transport')) {
+                return "We partner with major airlines for comfortable and affordable flights. You can check flight options while booking your trip.";
+            } else if (lowercaseMessage.includes('airport transfer')) {
+                return "Yes, we offer airport transfer services as part of our packages. Make sure to check the package details when booking.";
+    
+            // Activities & Tours
+            } else if (lowercaseMessage.includes('activity') || lowercaseMessage.includes('tour')) {
+                return "Our tours include a wide variety of activities such as hiking, city tours, and beach sports. For a full list, check the 'Activities' section!";
+            } else if (lowercaseMessage.includes('adventure') || lowercaseMessage.includes('outdoor')) {
+                return "We have exciting outdoor adventures, including zip-lining, scuba diving, and trekking! Explore our 'Activities' section for more.";
+            
+            // Reviews & Testimonials
+            } else if (lowercaseMessage.includes('review') || lowercaseMessage.includes('testimonials')) {
+                return "We have wonderful reviews from our clients! You can read them in the 'Reviews' section on our website.";
+            
+            // Special Offers
+            } else if (lowercaseMessage.includes('discount') || lowercaseMessage.includes('offer')) {
+                return "We frequently offer discounts on our packages! Check the 'Special Offers' section to see the latest deals.";
+            
+            // Accommodations & Hotels
+            } else if (lowercaseMessage.includes('hotel') || lowercaseMessage.includes('accommodation')) {
+                return "We provide luxurious and comfortable accommodations with our travel packages. Check the 'Accommodations' section for details.";
+            
+            // Payments & Refunds
+            } else if (lowercaseMessage.includes('payment') || lowercaseMessage.includes('refund')) {
+                return "We accept various payment methods including credit cards and digital wallets. Our refund policy can be found on the 'FAQs' page.";
+            
+            // Safety & Travel Insurance
+            } else if (lowercaseMessage.includes('safety') || lowercaseMessage.includes('insurance')) {
+                return "Your safety is our priority! We offer travel insurance as part of our packages. Details can be found on our website.";
+            
+            // General Information
+            } else if (lowercaseMessage.includes('time') || lowercaseMessage.includes('hours')) {
+                return "Our customer service is available 24/7 to assist you with your travel needs!";
+            }
+            // Extended Responses with Variations
+            else if (lowercaseMessage.includes('weather')) {
+                return "It's always a great idea to check the weather before your trip. You can find current weather updates on our website.";
+            } else if (lowercaseMessage.includes('itinerary')) {
+                return "You can customize your itinerary to include all your favorite spots! Please visit our 'Itinerary' section for more information.";
+            } else if (lowercaseMessage.includes('food') || lowercaseMessage.includes('cuisine')) {
+                return "We offer culinary tours that include local food experiences! Check our 'Food Tours' section for details.";
+            } else if (lowercaseMessage.includes('guide') || lowercaseMessage.includes('guidebook')) {
+                return "Our travel guides are knowledgeable and friendly, ready to help you explore! You can find more about them in our 'Guided Tours' section.";
+            } else if (lowercaseMessage.includes('family') || lowercaseMessage.includes('kids')) {
+                return "We offer family-friendly packages with activities for all ages. Check our 'Family Packages' section for more!";
+            } else if (lowercaseMessage.includes('solo travel') || lowercaseMessage.includes('backpacking')) {
+                return "We have great options for solo travelers, including backpacking tours and group travel. Visit our 'Solo Travel' section!";
+            } else if (lowercaseMessage.includes('special requests') || lowercaseMessage.includes('customization')) {
+                return "We accommodate special requests to make your trip unique. Please share your needs in the 'Customization' section!";
+            } else if (lowercaseMessage.includes('emergency') || lowercaseMessage.includes('urgent')) {
+                return "In case of an emergency, please contact local authorities. For immediate assistance, reach out to our support team! You can also contact us at (+91) 79813 67125 or (+91) 93923 26481, or email us at support@roamaura.com for assistance.";
+            } 
+    
+            // Travel-specific keywords and responses
+            else if (lowercaseMessage.includes('travel insurance')) {
+                return "Travel insurance is essential for safeguarding your trip. It covers unexpected events such as trip cancellations and medical emergencies.";
+            } else if (lowercaseMessage.includes('hawaii travel restrictions')) {
+                return "Before traveling to Hawaii, please check the latest travel restrictions on the state's official website for updated information.";
+            } else if (lowercaseMessage.includes('travel state gov')) {
+                return "You can find travel advisories and restrictions on your state government's website. It's a reliable source for the latest updates.";
+            } else if (lowercaseMessage.includes('new york travel restrictions')) {
+                return "Check the New York state government website for the latest travel restrictions and health guidelines.";
+            } else if (lowercaseMessage.includes('travel agents near me')) {
+                return "You can search for travel agents near you using online directories or Google Maps for convenient options.";
+            } else if (lowercaseMessage.includes('travel resources')) {
+                return "Explore our 'Travel Resources' section for valuable information on visas, packing lists, and travel tips.";
+            } else if (lowercaseMessage.includes('trip cancellation')) {
+                return "Trip cancellation insurance is highly recommended. It can provide peace of mind in case you need to cancel your travel plans unexpectedly.";
+            } else if (lowercaseMessage.includes('travel guidelines')) {
+                return "For travel guidelines, refer to the World Health Organization (WHO) and your country's health department for the latest safety recommendations.";
+            }
+            else if (lowercaseMessage.includes('booking') || lowercaseMessage.includes('reserve')) {
+            return "You can book a trip with us by visiting the booking section on our website!";
+        } else if (lowercaseMessage.includes('price') || lowercaseMessage.includes('cost')) {
+            return "Our pricing varies depending on the destination. Please check the 'Packages' section for detailed information.";
+        } else if (lowercaseMessage.includes('contact') || lowercaseMessage.includes('support')) {
+            return "You can reach out to our support team via the 'Contact Us' page. You can also contact us at (+91) 79813 67125 or (+91) 93923 26481, or email us at support@roamaura.com for assistanceWe're here to help!";
+        } else if (lowercaseMessage.includes('thank you') || lowercaseMessage.includes('thanks')) {
+            return "You're welcome! Let me know if there's anything else I can help with.";
+        } else if (lowercaseMessage.includes('bye') || lowercaseMessage.includes('goodbye')) {
+            return "Goodbye! Have a great day!";
+        } 
+
+        // Expanded Responses: Destinations
+        else if (lowercaseMessage.includes('destination') || lowercaseMessage.includes('locations')) {
+            return "We offer amazing destinations worldwide, from tropical beaches to mountain escapes. Check our 'Destinations' page for more information!";
+        } else if (lowercaseMessage.includes('popular destinations')) {
+            return "Our most popular destinations include Bali, Paris, and the Maldives. Visit our 'Destinations' section for more details!";
+        }
+
+        // Transportation & Flights
+        else if (lowercaseMessage.includes('flight') || lowercaseMessage.includes('transport')) {
+            return "We partner with major airlines for comfortable and affordable flights. You can check flight options while booking your trip.";
+        } else if (lowercaseMessage.includes('airport transfer')) {
+            return "Yes, we offer airport transfer services as part of our packages. Make sure to check the package details when booking.";
+        }
+        // Activities & Tours
+        else if (lowercaseMessage.includes('activity') || lowercaseMessage.includes('tour')) {
+            return "Our tours include a wide variety of activities such as hiking, city tours, and beach sports. For a full list, check the 'Activities' section!";
+        } else if (lowercaseMessage.includes('adventure') || lowercaseMessage.includes('outdoor')) {
+            return "We have exciting outdoor adventures, including zip-lining, scuba diving, and trekking! Explore our 'Activities' section for more.";
+        }
+        // Reviews & Testimonials
+        else if (lowercaseMessage.includes('review') || lowercaseMessage.includes('testimonials')) {
+            return "We have wonderful reviews from our clients! You can read them in the 'Reviews' section on our website.";
+        }
+        // Special Offers
+        else if (lowercaseMessage.includes('discount') || lowercaseMessage.includes('offer')) {
+            return "We frequently offer discounts on our packages! Check the 'Special Offers' section to see the latest deals.";
+        }
+        // Accommodations & Hotels
+        else if (lowercaseMessage.includes('hotel') || lowercaseMessage.includes('accommodation')) {
+            return "We provide luxurious and comfortable accommodations with our travel packages. Check the 'Accommodations' section for details.";
+        }
+        // Payments & Refunds
+        else if (lowercaseMessage.includes('payment') || lowercaseMessage.includes('refund')) {
+            return "We accept various payment methods including credit cards and digital wallets. Our refund policy can be found on the 'FAQs' page.";
+        }
+        // Safety & Travel Insurance
+        else if (lowercaseMessage.includes('safety') || lowercaseMessage.includes('insurance')) {
+            return "Your safety is our priority! We offer travel insurance as part of our packages. Details can be found on our website.";
+        }
+        // General Information
+        else if (lowercaseMessage.includes('time') || lowercaseMessage.includes('hours')) {
+            return "Our customer service is available 24/7 to assist you with your travel needs!";
+        }
+        // Extended Responses with Variations
+        else if (lowercaseMessage.includes('weather')) {
+            return "It's always a great idea to check the weather before your trip. You can find current weather updates on our website.";
+        } else if (lowercaseMessage.includes('itinerary')) {
+            return "You can customize your itinerary to include all your favorite spots! Please visit our 'Itinerary' section for more information.";
+        } else if (lowercaseMessage.includes('food') || lowercaseMessage.includes('cuisine')) {
+            return "We offer culinary tours that include local food experiences! Check our 'Food Tours' section for details.";
+        } else if (lowercaseMessage.includes('guide') || lowercaseMessage.includes('guidebook')) {
+            return "Our travel guides are knowledgeable and friendly, ready to help you explore! You can find more about them in our 'Guided Tours' section.";
+        } else if (lowercaseMessage.includes('family') || lowercaseMessage.includes('kids')) {
+            return "We offer family-friendly packages with activities for all ages. Check our 'Family Packages' section for more!";
+        } else if (lowercaseMessage.includes('solo travel') || lowercaseMessage.includes('backpacking')) {
+            return "We have great options for solo travelers, including backpacking tours and group travel. Visit our 'Solo Travel' section!";
+        } else if (lowercaseMessage.includes('special requests') || lowercaseMessage.includes('customization')) {
+            return "We accommodate special requests to make your trip unique. Please share your needs in the 'Customization' section!";
+        } else if (lowercaseMessage.includes('emergency') || lowercaseMessage.includes('urgent')) {
+            return "In case of an emergency, please contact local authorities. For immediate assistance, reach out to our support team!";
+        } 
+
+        // Travel-specific keywords and responses
+        else if (lowercaseMessage.includes('travel insurance')) {
+            return "Travel insurance is essential for safeguarding your trip. It covers unexpected events such as trip cancellations and medical emergencies.";
+        } else if (lowercaseMessage.includes('hawaii travel restrictions')) {
+            return "Before traveling to Hawaii, please check the latest travel restrictions on the state's official website for updated information.";
+        } else if (lowercaseMessage.includes('travel state gov')) {
+            return "You can find travel advisories and restrictions on your state government's website. It's a reliable source for the latest updates.";
+        } else if (lowercaseMessage.includes('new york travel restrictions')) {
+            return "Check the New York state government website for the latest travel restrictions and health guidelines.";
+        } else if (lowercaseMessage.includes('travel agents near me')) {
+            return "You can search for travel agents near you using online directories or Google Maps for convenient options.";
+        } else if (lowercaseMessage.includes('visa requirements')) {
+            return "Visa requirements vary by country and nationality. It's best to check the official government website of the destination country.";
+        } else if (lowercaseMessage.includes('travel resources')) {
+            return "Explore our 'Travel Resources' section for valuable information on visas, packing lists, and travel tips.";
+        } else if (lowercaseMessage.includes('trip cancellation')) {
+            return "Trip cancellation insurance is highly recommended. It can provide peace of mind in case you need to cancel your travel plans unexpectedly.";
+        } else if (lowercaseMessage.includes('travel guidelines')) {
+            return "For travel guidelines, refer to the World Health Organization (WHO) and your country's health department for the latest safety recommendations.";
+        }
+            // Default response if no keywords matched
+            return "I'm not sure how to respond to that. Could you please provide more details or ask something else? You can also contact us at (+91) 79813 67125 or (+91) 93923 26481, or email us at support@roamaura.com for assistance.";
+      
+        }
+    </script>
+        
+</body>
+</html>

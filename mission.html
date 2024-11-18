@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Mission - RoamAura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   <style>
+    .vision-mission-section {
+        padding: 80px 20px;
+        background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+        display: flex;
+        justify-content: center;
+    }
+
+    .vision-mission {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 10px;
+        gap: 30px;
+        width: 90%;
+        max-width: 1400px;
+        flex-wrap: wrap; 
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 20px;
+        padding: 30px;
+        width: 30%; 
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid transparent;
+        background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-color: #1e90ff;
+    }
+
+    .card-logo i {
+        font-size: 60px;
+        background: linear-gradient(135deg, #7f7fd5, #86a8e7, #91eae4);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 20px;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .card:hover .card-logo i {
+        color: #48CFCB;
+        transform: scale(1.1);
+    }
+
+    h3 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .card:hover h3 {
+        color: #1e90ff;
+    }
+
+    .card:hover p {
+        color: #333;
+    }
+
+
+    @media (max-width: 768px) {
+        .vision-mission {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            width: 90%;
+            margin-bottom: 20px;
+        }
+    }
+
+   </style>
+</head>
+<div id="preloader-container"></div>
+
+ <!-- JavaScript for Preloader -->
+ <script>
+     fetch('preloader.html')
+         .then(response => response.text())
+         .then(data => {
+             document.getElementById('preloader-container').innerHTML = data;
+             
+             
+             setTimeout(() => {
+                 document.getElementById('preloader-container').style.display = 'none';
+             }, 2000); 
+         })
+         .catch(error => console.error('Error loading preloader:', error));
+ </script>
+<body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;">  RoamAura
+                </div>
+                <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+           
+        <ul id="nav-links" class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="aboutus.html" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="team.html">Our Team</a>
+                    <a href="mission.html">Our Mission</a>
+                    <a href="history.html">History&Milestones</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="services.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="travelplanning.html">Travel Planning</a>
+                    <a href="customtours.html">Custom Tours</a>
+                    <a href="accommodation.html">Accommodation</a>
+                    <a href="transfers.html">Transfers</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="destinations.html" class="dropbtn">Destinations</a>
+                <div class="dropdown-content">
+                    <a href="#europe">Europe</a>
+                    <a href="#asia">Asia</a>
+                    <a href="#america">America</a>
+                    <a href="#oceania">Oceania</a>
+                </div>
+            </li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="index.html?#contact-form">Contact</a></li>
+
+        </ul>
+        <div class="auth-buttons">
+            <a href="register.html" class="btn-signup">Register</a>
+            <a href="login.html" class="btn-signin">Signin</a>
+        </div>
+    </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>Our Mission</h1>
+        <p>We aim to inspire, guide, and connect travelers around the world.</p>
+    </section>
+
+
+
+
+
+    <section class="vision-mission-section">
+        <div class="vision-mission">
+            <!-- Vision Card -->
+            <div class="card">
+                <div class="card-logo">
+                    <i class="fas fa-lightbulb"></i> 
+                </div>
+                <h3>Our Vision</h3>
+                <p>At RoamAura, we aim to make travel accessible and enjoyable for everyone. We believe in the transformative power of travel and seek to inspire a sense of adventure and cultural appreciation.</p>
+            </div>
+    
+            <!-- Mission Card -->
+            <div class="card">
+                <div class="card-logo">
+                    <i class="fas fa-rocket"></i> 
+                </div>
+                <h3>Our Mission</h3>
+                <p>Our goal is to offer unique and customizable travel solutions, ensuring every journey is personalized and enriching. RoamAura connects travelers with the world’s most fascinating destinations.</p>
+            </div>
+    
+            <!-- Values Card -->
+            <div class="card">
+                <div class="card-logo">
+                    <i class="fas fa-globe"></i> 
+                </div>
+                <h3>Our Values</h3>
+                <p>We prioritize sustainability, inclusivity, and cultural respect in every travel experience we design. RoamAura is committed to ethical travel that benefits local communities and fosters global connections.</p>
+            </div>
+        </div>
+    </section>
+    
+    
+     <!-- Chat Button -->
+     <div id="chatButton" class="floating-chat-button">
+        <i class="fas fa-comments"></i> 
+    </div>
+    
+    <!-- Chat Window -->
+    <div id="chatWindow" class="chat-window">
+        <div class="chat-header">
+            <h4>Chat with us</h4>
+            <button id="closeChat" class="close-btn">&times;</button>
+        </div>
+        <div id="chatBody" class="chat-body">
+            <div id="chatContent" class="chat-content"></div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Type a message..." />
+            <button id="sendMessage" class="send-btn">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

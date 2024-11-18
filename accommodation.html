@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <title>Accommodation</title>
+    <style>
+       body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0e7ff; 
+            margin-top: 6%;
+        }
+
+        .container {
+            width: 90%;
+            margin: 2rem auto;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+
+        .filter-bar input, .filter-bar select {
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .filter-bar input:focus, .filter-bar select:focus {
+            border-color: #007bff;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: #343a40;
+        }
+
+        .card p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+
+        .card .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .card .rating {
+            color: #ffc107;
+            font-size: 1.1rem;
+        }
+        .card .button-group {
+            display: flex;
+            gap: 10px; /* Adds spacing between the buttons */
+        }
+
+        .card button {
+            background-color: #0069d9;
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            flex: 1; /* Ensures buttons are of equal width */
+        }
+
+        .card button:hover {
+            background-color: #004085;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #495057;
+        }
+
+        .modal-body {
+            margin-top: 1rem;
+            color: #343a40;
+        }
+
+        .close {
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #6c757d;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: #000000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .accommodation-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .accommodation-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<div id="preloader-container"></div>
+
+
+<script>
+  
+    fetch('preloader.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('preloader-container').innerHTML = data;
+           
+            setTimeout(() => {
+                document.getElementById('preloader-container').style.display = 'none';
+            }, 2000); 
+        })
+        .catch(error => console.error('Error loading preloader:', error));
+</script>
+ <!-- Chat Button -->
+ <div id="chatButton" class="floating-chat-button">
+    <i class="fas fa-comments"></i> <!-- Font Awesome chat icon -->
+</div>
+<header>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="logo" style="width: 15%; border-radius:10px;"> RoamAura
+        </div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul id="nav-links" class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="aboutus.html" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="team.html">Our Team</a>
+                    <a href="mission.html">Our Mission</a>
+                    <a href="history.html">History & Milestones</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="services.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="travelplanning.html">Travel Planning</a>
+                    <a href="customtours.html">Custom Tours</a>
+                    <a href="accommodation.html">Accommodation</a>
+                    <a href="transfers.html">Transfers</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="destinations.html" class="dropbtn">Destinations</a>
+                <div class="dropdown-content">
+                    <a href="#europe">Europe</a>
+                    <a href="#asia">Asia</a>
+                    <a href="#america">America</a>
+                    <a href="#oceania">Oceania</a>
+                </div>
+            </li>
+            <li><a href="Gallery.html">Gallery</a></li>
+            <li><a href="index.html?#contact-form">Contact</a></li>
+        </ul>
+        <div class="auth-buttons">
+            <a href="register.html" class="btn-signup">Register</a>
+            <a href="login.html" class="btn-signin">Signin</a>
+        </div>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+    <div class="filter-bar">
+        <input type="text" id="search" placeholder="Search by name or location">
+        <select id="sort">
+            <option value="default">Sort By</option>
+            <option value="priceLowHigh">Price: Low to High</option>
+            <option value="priceHighLow">Price: High to Low</option>
+        </select>
+        <select id="filter">
+            <option value="all">Filter By Type</option>
+            <option value="hotel">Hotel</option>
+            <option value="resort">Resort</option>
+            <option value="villa">Villa</option>
+            <option value="hostel">Hostel</option>
+        </select>
+    </div>
+    <div class="accommodation-grid" id="accommodationGrid">
+        <div class="card" data-type="hotel" data-price="30000" data-location="Mumbai, India">
+            <img src="images/tajmahalpalace.jpg" alt="Taj Mahal Palace">
+            <div class="card-body">
+                <h3>Taj Mahal Palace</h3>
+                <p>Location: Mumbai, India</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹30,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Taj Mahal Palace', '₹30,000/night', 'A luxurious stay in the heart of Mumbai with a view of the Gateway of India.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-type="resort" data-price="25000" data-location="Udaipur, India">
+            <img src="images/lakepalace.jpg" alt="Lake Palace">
+            <div class="card-body">
+                <h3>Lake Palace</h3>
+                <p>Location: Udaipur, India</p>
+                <p>Type: Resort</p>
+                <p class="price">₹25,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                <button onclick="openModal('Lake Palace', '₹25,000/night', 'A stunning resort set on Lake Pichola, offering a regal experience.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-type="villa" data-price="18000" data-location="Goa, India">
+            <img src="images/privateluxuryvilla.jpg" alt="Private Villa">
+            <div class="card-body">
+                <h3>Private Luxury Villa</h3>
+                <p>Location: Goa, India</p>
+                <p>Type: Villa</p>
+                <p class="price">₹18,000/night</p>
+                <p class="rating">Rating: ★★★★☆</p>
+                <div class="button-group">
+                <button onclick="openModal('Private Luxury Villa', '₹18,000/night', 'Experience ultimate privacy and luxury in Goa with your private villa.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-type="hotel" data-price="22000" data-location="Delhi, India">
+            <img src="images/oberoi.jpg" alt="The Oberoi">
+            <div class="card-body">
+                <h3>The Oberoi</h3>
+                <p>Location: Delhi, India</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹22,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                <button onclick="openModal('The Oberoi', '₹22,000/night', 'A premier luxury hotel offering world-class service and elegance.')">Details</button>
+                <button>Book Now</button>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="card" data-type="resort" data-price="35000" data-location="Kerala, India">
+            <img src="images/kumarakomresort.jpg" alt="Kumarakom Lake Resort">
+            <div class="card-body">
+                <h3>Kumarakom Lake Resort</h3>
+                <p>Location: Kerala, India</p>
+                <p>Type: Resort</p>
+                <p class="price">₹35,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                <button onclick="openModal('Kumarakom Lake Resort', '₹35,000/night', 'A serene resort by the backwaters offering traditional and luxurious experiences.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="hostel" data-price="1500" data-location="Jaipur, India">
+            <img src="images/jaipurhostel.jpg" alt="Backpacker’s Haven">
+            <div class="card-body">
+                <h3>Backpacker’s Haven</h3>
+                <p>Location: Jaipur, India</p>
+                <p>Type: Hostel</p>
+                <p class="price">₹1,500/night</p>
+                <p class="rating">Rating: ★★★★☆</p>
+                <div class="button-group">
+                <button onclick="openModal('Backpacker’s Haven', '₹1,500/night', 'A budget-friendly hostel with a vibrant atmosphere, perfect for travelers.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="villa" data-price="27000" data-location="Bali, Indonesia">
+            <img src="images/baliluxuryvilla.jpg" alt="Bali Luxury Villa">
+            <div class="card-body">
+                <h3>Bali Luxury Villa</h3>
+                <p>Location: Bali, Indonesia</p>
+                <p>Type: Villa</p>
+                <p class="price">₹27,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                <button onclick="openModal('Bali Luxury Villa', '₹27,000/night', 'A tranquil villa with stunning views, private pool, and top-notch amenities.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="resort" data-price="40000" data-location="Maldives">
+            <img src="images/maldivesresort.jpg" alt="Maldives Paradise Resort">
+            <div class="card-body">
+                <h3>Maldives Paradise Resort</h3>
+                <p>Location: Maldives</p>
+                <p>Type: Resort</p>
+                <p class="price">₹40,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                <button onclick="openModal('Maldives Paradise Resort', '₹40,000/night', 'An exclusive resort with overwater villas, breathtaking views, and luxury experiences.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="hotel" data-price="12000" data-location="Bangkok, Thailand">
+            <img src="images/grandhotelbangkok.jpg" alt="Grand Hotel Bangkok">
+            <div class="card-body">
+                <h3>Grand Hotel Bangkok</h3>
+                <p>Location: Bangkok, Thailand</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹12,000/night</p>
+                <p class="rating">Rating: ★★★★☆</p>
+                <div class="button-group">
+                <button onclick="openModal('Grand Hotel Bangkok', '₹12,000/night', 'A modern hotel located in the heart of Bangkok with exceptional services.')">Details</button>
+                <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="card" data-type="hotel" data-price="15000" data-location="Paris, France">
+            <img src="images/luxuryparishotel.png" alt="Luxury Paris Hotel">
+            <div class="card-body">
+                <h3>Luxury Paris Hotel</h3>
+                <p>Location: Paris, France</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹15,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Luxury Paris Hotel', '₹15,000/night', 'Experience elegance and style in the heart of Paris with world-class amenities.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="villa" data-price="20000" data-location="Maldives, Indian Ocean">
+            <img src="images/overwatervilla.jpg" alt="Overwater Villa Maldives">
+            <div class="card-body">
+                <h3>Overwater Villa Maldives</h3>
+                <p>Location: Maldives, Indian Ocean</p>
+                <p>Type: Villa</p>
+                <p class="price">₹20,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Overwater Villa Maldives', '₹20,000/night', 'Stay in a luxurious overwater villa surrounded by crystal clear waters and stunning marine life.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="hotel" data-price="18000" data-location="Tokyo, Japan">
+            <img src="images/skytokyohotel.jpg" alt="Sky Tokyo Hotel">
+            <div class="card-body">
+                <h3>Sky Tokyo Hotel</h3>
+                <p>Location: Tokyo, Japan</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹18,000/night</p>
+                <p class="rating">Rating: ★★★★☆</p>
+                <div class="button-group">
+                    <button onclick="openModal('Sky Tokyo Hotel', '₹18,000/night', 'A futuristic hotel offering panoramic views of Tokyo, blending luxury and technology.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="villa" data-price="25000" data-location="Bora Bora, French Polynesia">
+            <img src="images/boraovilla.jpg" alt="Bora Bora Ocean Villa">
+            <div class="card-body">
+                <h3>Bora Bora Ocean Villa</h3>
+                <p>Location: Bora Bora, French Polynesia</p>
+                <p>Type: Villa</p>
+                <p class="price">₹25,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Bora Bora Ocean Villa', '₹25,000/night', 'Escape to a serene overwater villa with breathtaking views of the turquoise lagoon in Bora Bora.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" data-type="hotel" data-price="22000" data-location="Dubai, UAE">
+            <img src="images/royaldubaihotel.jpg" alt="Royal Dubai Hotel">
+            <div class="card-body">
+                <h3>Royal Dubai Hotel</h3>
+                <p>Location: Dubai, UAE</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹22,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Royal Dubai Hotel', '₹22,000/night', 'Stay at this magnificent 5-star hotel with extraordinary views of the Dubai skyline and luxurious services.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="villa" data-price="35000" data-location="Seychelles, Indian Ocean">
+            <img src="images/seychellesvilla.jpg" alt="Seychelles Private Villa">
+            <div class="card-body">
+                <h3>Seychelles Private Villa</h3>
+                <p>Location: Seychelles, Indian Ocean</p>
+                <p>Type: Villa</p>
+                <p class="price">₹35,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Seychelles Private Villa', '₹35,000/night', 'Indulge in privacy and luxury at this exclusive villa with private beach access and unparalleled views.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="hotel" data-price="10000" data-location="London, UK">
+            <img src="images/centralLondonhotel.jpg" alt="Central London Hotel">
+            <div class="card-body">
+                <h3>Central London Hotel</h3>
+                <p>Location: London, UK</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹10,000/night</p>
+                <p class="rating">Rating: ★★★☆☆</p>
+                <div class="button-group">
+                    <button onclick="openModal('Central London Hotel', '₹10,000/night', 'A budget-friendly hotel located in the heart of London with easy access to major attractions.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="villa" data-price="45000" data-location="Tulum, Mexico">
+            <img src="images/tulumluxuryvilla.jpg" alt="Luxury Villa Tulum">
+            <div class="card-body">
+                <h3>Luxury Villa Tulum</h3>
+                <p>Location: Tulum, Mexico</p>
+                <p>Type: Villa</p>
+                <p class="price">₹45,000/night</p>
+                <p class="rating">Rating: ★★★★★</p>
+                <div class="button-group">
+                    <button onclick="openModal('Luxury Villa Tulum', '₹45,000/night', 'Live in style in a stunning beachside villa in Tulum, complete with modern amenities and breathtaking views.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" data-type="hotel" data-price="13000" data-location="Singapore">
+            <img src="images/singaporegrandhotel.jpg" alt="Singapore Grand Hotel">
+            <div class="card-body">
+                <h3>Singapore Grand Hotel</h3>
+                <p>Location: Singapore</p>
+                <p>Type: Hotel</p>
+                <p class="price">₹13,000/night</p>
+                <p class="rating">Rating: ★★★★☆</p>
+                <div class="button-group">
+                    <button onclick="openModal('Singapore Grand Hotel', '₹13,000/night', 'A grand hotel offering luxury in the vibrant city of Singapore, with close proximity to major tourist spots.')">Details</button>
+                    <button>Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="detailsModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle"></h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p id="modalPrice"></p>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+</div>
+
+
+
+        <!-- Chat Button -->
+        <div id="chatButton" class="floating-chat-button">
+            <i class="fas fa-comments"></i> <!-- Font Awesome chat icon -->
+        </div>
+        
+        <!-- Chat Window -->
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header">
+                <h4>Chat with us</h4>
+                <button id="closeChat" class="close-btn">&times;</button>
+            </div>
+            <div id="chatBody" class="chat-body">
+                <div id="chatContent" class="chat-content"></div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="userInput" placeholder="Type a message..." />
+                <button id="sendMessage" class="send-btn">Send</button>
+            </div>
+        </div>
+        <script src="script.js"></script>
+        
+    
+            
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-columns">
+                <!-- About Section -->
+                <div class="footer-column about">
+                    <h3>About RoamAura</h3>
+                    <p>RoamAura is dedicated to bringing the best travel experiences to adventurous souls. Explore the world with us and create unforgettable memories.</p>
+                </div>
+    
+                <!-- Contact Section -->
+                <div class="footer-column contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wander Street, Travel Town, 54321</p>
+                    <p><i class="fas fa-phone-alt"></i> +1-800-ROAMAURA</p>
+                    <p><i class="fas fa-envelope"></i> hello@roamaura.com</p>
+                </div>
+    
+                <!-- Social Media Links -->
+                <div class="footer-column social">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2024 RoamAura. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+        </div>
+    </footer>
+
+
+<script>
+    function openModal(title, price, description) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalPrice').innerText = 'Price: ' + price;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('detailsModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('detailsModal').style.display = 'none';
+    }
+
+    const searchInput = document.getElementById('search');
+    const sortSelect = document.getElementById('sort');
+    const filterSelect = document.getElementById('filter');
+    const accommodationGrid = document.getElementById('accommodationGrid');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', filterResults);
+    sortSelect.addEventListener('change', filterResults);
+    filterSelect.addEventListener('change', filterResults);
+
+    function filterResults() {
+        const searchText = searchInput.value.toLowerCase();
+        const sortValue = sortSelect.value;
+        const filterValue = filterSelect.value;
+
+        let filteredCards = Array.from(cards);
+
+        filteredCards = filteredCards.filter(card => {
+            const title = card.querySelector('h3').innerText.toLowerCase();
+            const location = card.dataset.location.toLowerCase();
+            return title.includes(searchText) || location.includes(searchText);
+        });
+
+        if (filterValue !== 'all') {
+            filteredCards = filteredCards.filter(card => card.dataset.type === filterValue);
+        }
+
+        if (sortValue === 'priceLowHigh') {
+            filteredCards.sort((a, b) => parseInt(a.dataset.price) - parseInt(b.dataset.price));
+        } else if (sortValue === 'priceHighLow') {
+            filteredCards.sort((a, b) => parseInt(b.dataset.price) - parseInt(a.dataset.price));
+        }
+
+        accommodationGrid.innerHTML = '';
+        filteredCards.forEach(card => accommodationGrid.appendChild(card));
+    }
+</script>
+
+</body>
+</html>
